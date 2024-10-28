@@ -22,6 +22,12 @@ jobs:
         run: |
           pip install pandas openpyxl
 
+      - name: List directory
+        run: ls -R # List files in the repo to ensure the folder structure
+
+      - name: Check Python version
+        run: python --version # Check the Python version
+
       - name: Run script
         run: python scripts/sum_ages.py
 
