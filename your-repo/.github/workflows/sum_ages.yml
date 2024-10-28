@@ -1,0 +1,32 @@
+name: Sum Ages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sum_ages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Specify your Python version
+
+      - name: Install dependencies
+        run: |
+          pip install pandas openpyxl
+
+      - name: Run script
+        run: python scripts/sum_ages.py
+
+      - name: Upload result
+        uses: actions/upload-artifact@v2
+        with:
+          name: summed_ages
+          path: data/summed_ages.xlsx
